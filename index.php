@@ -7,12 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 	<link href="assets/jquery/jquery-ui.css" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/367fdf8171.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/custom/js/custom.js"></script>
-	<script type="text/javascript" src="process_add_travel_history.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="assets/custom/js/custom.js"></script> -->
+	<!-- <script type="text/javascript" src="process_add_travel_history.js"></script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 	<title>COVID-19 Information System | Dashboard</title>
 	<style>
 	.demoHeaders {
@@ -53,14 +53,6 @@
 		width: 200px;
 	}
 	</style>
-	<script>
-		$(document).ready(function(){
-			$('#submit').click(function(){
-				var flightdestination = $('#flight_destination').val().trim();
-				$('#flight_destination2').html(flightdestination);
-			});
-		});
-	</script>
 </head>
 <body>
 	<header class="header">
@@ -72,7 +64,7 @@
 				<a href="" class="navbar-brand">
 					<img src="assets/img/lnu.png" width="60" height="60" class="d-inline-block align-top" alt="LNU | EBMS">
 				</a>
-				<div class="col-sm-3 p-0">	
+				<div class="col-sm-3 p-0">
 					<label class="navbar-text m-0 p-0">COVID-19 | Information System</label>
 					<label class="navbar-text m-0 p-0">Activity 1 | Submit and Display data</label>
 				</div>
@@ -117,7 +109,7 @@
 								<div class="row">
 									<div class="col-md-4">
 										<label for="first_name" class="col-form-label-sm">First name</label>
-										<input type="text" name="first_name" class="form-control" placeholder="ex. Juan">
+										<input type="text" name="first_name" id="first_name" class="form-control" placeholder="ex. Juan">
 									</div>
 									<div class="col-md-4">
 										<label for="first_name" class="col-form-label-sm">Last name</label>
@@ -197,7 +189,6 @@
 															</a>
 														</div>
 														<div class="modal-body">
-															<form class="feedback" name="travel_history_form">
 																<label for="flight_type" class="col-form-label-sm" style="color: gray;">Type of flight</label>
 																<select class="form-control" name="flight_type">
 																	<option value="N/A">~Select~</option>
@@ -221,10 +212,9 @@
 																	</div>
 																</div>
 																<div class="modal-footer">
-																	<button class="btn btn-primary" id="submit" name="send">Add</button>
+																	<button class="btn btn-primary" id="add-travel-history" name="send">Add</button>
 																	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 																</div>
-															</form>
 														</div>
 													</div>
 												</div>
@@ -249,134 +239,144 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script>
 
-$( "#accordion" ).accordion();
+const btnAddTravelHistory = $('#add-travel-history')
+btnAddTravelHistory.click(() => {
+
+	const flightType = $('#flight_type')
+
+	const flightOrigin = $('#flight_origin').val()
+	const flightDestination = $('#flight_destination').val()
+	const flightArrival = $('#flight_arrival').val()
+
+$('#first_name').val(flightOrigin)
+})
+// $( "#accordion" ).accordion();
+
+
+// var availableTags = [
+// 	"ActionScript",
+// 	"AppleScript",
+// 	"Asp",
+// 	"BASIC",
+// 	"C",
+// 	"C++",
+// 	"Clojure",
+
+// 	"COBOL",
+// 	"ColdFusion",5
+// 	"Erlang",
+// 	"Fortran",
+// 	"Groovy",
+// 	"Haskell",
+// 	"Java",
+// 	"JavaScript",
+// 	"Lisp",
+// 	"Perl",
+// 	"PHP",
+// 	"Python",
+// 	"Ruby",
+// 	"Scala",
+// 	"Scheme"
+// ];
+// $( "#autocomplete" ).autocomplete({
+// 	source: availableTags
+// });
 
 
 
-var availableTags = [
-	"ActionScript",
-	"AppleScript",
-	"Asp",
-	"BASIC",
-	"C",
-	"C++",
-	"Clojure",
-
-	"COBOL",
-	"ColdFusion",5
-	"Erlang",
-	"Fortran",
-	"Groovy",
-	"Haskell",
-	"Java",
-	"JavaScript",
-	"Lisp",
-	"Perl",
-	"PHP",
-	"Python",
-	"Ruby",
-	"Scala",
-	"Scheme"
-];
-$( "#autocomplete" ).autocomplete({
-	source: availableTags
-});
+// $( "#button" ).button();
+// $( "#button-icon" ).button({
+// 	icon: "ui-icon-gear",
+// 	showLabel: false
+// });
 
 
 
-$( "#button" ).button();
-$( "#button-icon" ).button({
-	icon: "ui-icon-gear",
-	showLabel: false
-});
+// $( "#radioset" ).buttonset();
 
 
 
-$( "#radioset" ).buttonset();
+// $( "#controlgroup" ).controlgroup();
 
 
 
-$( "#controlgroup" ).controlgroup();
+// $( "#tabs" ).tabs();
 
 
 
-$( "#tabs" ).tabs();
+// // $( "#dialog" ).dialog({
+// // 	autoOpen: false,
+// // 	width: 400,
+// // 	buttons: [
+// // 		{
+// // 			text: "Ok",
+// // 			click: function() {
+// // 				$( this ).dialog( "close" );
+// // 			}
+// // 		},
+// // 		{
+// // 			text: "Cancel",
+// // 			click: function() {
+// // 				$( this ).dialog( "close" );
+// // 			}
+// // 		}
+// // 	]
+// // });
+
+// // Link to open the dialog
+// $( "#dialog-link" ).click(function( event ) {
+// 	$( "#dialog" ).dialog( "open" );
+// 	event.preventDefault();
+// });
 
 
 
-$( "#dialog" ).dialog({
-	autoOpen: false,
-	width: 400,
-	buttons: [
-		{
-			text: "Ok",
-			click: function() {
-				$( this ).dialog( "close" );
-			}
-		},
-		{
-			text: "Cancel",
-			click: function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	]
-});
+// $( "#datepicker" ).datepicker({
+// 	inline: true,
+// 	dateFormat: "DD MM dd,yy"
+// });
 
-// Link to open the dialog
-$( "#dialog-link" ).click(function( event ) {
-	$( "#dialog" ).dialog( "open" );
-	event.preventDefault();
-});
+
+// $( "#slider" ).slider({
+// 	range: true,
+// 	values: [ 17, 67 ]
+// });
 
 
 
-$( "#datepicker" ).datepicker({
-	inline: true,
-	dateFormat: "DD MM dd,yy"
-});
-
-
-$( "#slider" ).slider({
-	range: true,
-	values: [ 17, 67 ]
-});
+// $( "#progressbar" ).progressbar({
+// 	value: 20
+// });
 
 
 
-$( "#progressbar" ).progressbar({
-	value: 20
-});
+// $( "#spinner" ).spinner();
 
 
 
-$( "#spinner" ).spinner();
+// $( "#menu" ).menu();
 
 
 
-$( "#menu" ).menu();
+// $( "#tooltip" ).tooltip();
 
 
 
-$( "#tooltip" ).tooltip();
+// $( "#selectmenu" ).selectmenu();
 
 
-
-$( "#selectmenu" ).selectmenu();
-
-
-// Hover states on the static widgets
-$( "#dialog-link, #icons li" ).hover(
-	function() {
-		$( this ).addClass( "ui-state-hover" );
-	},
-	function() {
-		$( this ).removeClass( "ui-state-hover" );
-	}
-);
-$(':input[type=number]').on('mousewheel', function(e){
-    e.preventDefault();
-});
+// // Hover states on the static widgets
+// $( "#dialog-link, #icons li" ).hover(
+// 	function() {
+// 		$( this ).addClass( "ui-state-hover" );
+// 	},
+// 	function() {
+// 		$( this ).removeClass( "ui-state-hover" );
+// 	}
+// );
+// $(':input[type=number]').on('mousewheel', function(e){
+//     e.preventDefault();
+// });
 </script>
 </body>
 </html>
